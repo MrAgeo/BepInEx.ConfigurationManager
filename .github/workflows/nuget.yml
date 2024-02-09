@@ -22,7 +22,7 @@ jobs:
       working-directory: .
       run: |
         nuget restore
-        gci -Recurse -Filter *.nuspec | foreach { nuget pack "$($_.DirectoryName)\$($_.BaseName).csproj" -build -properties Configuration=Release }
+        gci -Recurse -Filter *.nuspec | foreach { dotnet pack "$($_.DirectoryName)\$($_.BaseName).csproj" -build -properties Configuration=Release }
       
     - name: Nuget push
       working-directory: .
